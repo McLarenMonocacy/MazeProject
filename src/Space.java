@@ -1,27 +1,36 @@
 public class Space {
-    public enum Tag {
-        START,
-        END
+    public static final int MAX_ADJACENT = 4;
+
+    private String type;        // "O", "X", "S", "E"
+    private Space[] adjacent;   // adjacent spaces (up, down, left, right)
+    private int adjacentCount;
+    private boolean onPath;
+    private int row, col;       // for GridWriter
+
+    public Space(String type, int row, int col) {
+        this.type = type;
+        this.row = row;
+        this.col = col;
+        this.adjacent = new Space[MAX_ADJACENT];
+        this.adjacentCount = 0;
+        this.onPath = false;
     }
 
-    private SpaceID id;
-    //List of tags to identify the space as a start/end (would this be better as a bit mask?)
-    private CacyLinkedList<Tag> tags;
-
-    public Space (SpaceID id, CacyLinkedList<Tag> tags){
-        this.id = id;
-        this.tags = tags;
+    public void addAdjacent(Space s) {
+        if (adjacentCount < MAX_ADJACENT) {
+            adjacent[adjacentCount++] = s;
+        }
     }
 
-    public Space (SpaceID id){
-        this(id,null);
-    }
+    public Space[] getAdjacent() { return adjacent; }
+    public int getAdjacentCount() { return adjacentCount; }
+    public String getType() { return type; }
+    public boolean isOnPath() { return onPath; }
+    public void setOnPath(boolean onPath) { this.onPath = onPath; }
+    public int getRow() { return row; }
+    public int getCol() { return col; }
 
-    public SpaceID getId() {
-        return id;
-    }
-
-    public CacyLinkedList<Tag> getTags() {
-        return tags;
+    public boolean isOpen() {
+        return type.equals("O") || type.equals("S") || type.equals("E");
     }
 }
