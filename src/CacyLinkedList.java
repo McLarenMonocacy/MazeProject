@@ -21,7 +21,7 @@ public class CacyLinkedList<T>{
             head = newRecord;
         }
         else {
-            tail.nextRecord = newRecord;
+            if (tail != null) tail.nextRecord = newRecord;
         }
         tail = newRecord;
     }
@@ -34,14 +34,13 @@ public class CacyLinkedList<T>{
         head = newRecord;
     }
 
-    public T remove(T t) {
+    public Boolean remove(T t) {
         //Returns T if T is removed from the list, otherwise returns null
         if (t == null) return null; //Cannot remove null
         removeSuccessFlag = false;
         head = remove(head,t);
         if (head == null) tail = null;
-        if (removeSuccessFlag) return t;
-        else return null;
+        return removeSuccessFlag;
     }
     private Record remove(Record recordToCheck, T t){
         if (recordToCheck.t.equals(t)){
