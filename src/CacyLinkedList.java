@@ -21,7 +21,7 @@ public class CacyLinkedList<T>{
             head = newRecord;
         }
         else {
-            if (tail != null) tail.nextRecord = newRecord;
+            if (tail != null) tail.nextRecord = newRecord; //I get why a null check is desired here, but if tail is null here then there is a big problem
         }
         tail = newRecord;
     }
