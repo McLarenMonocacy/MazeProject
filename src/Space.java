@@ -1,7 +1,13 @@
 public class Space {
     public static final int MAX_ADJACENT = 4;
 
-    private String type;        // "O", "X", "S", "E"
+    public enum type{
+        START,
+        END,
+        OPEN
+    }
+
+    private type type;        // "O", "X", "S", "E"
     private Space[] adjacent;   // adjacent spaces (up, down, left, right)
     private int adjacentCount;
     private boolean onPath;
