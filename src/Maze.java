@@ -18,15 +18,6 @@ public class Maze {
 
     }
 
-    public Maze(Space[] spaces){
-        this.spaces = new CacyLinkedList<>();
-        for (Space space : spaces){
-            if (end == null && space.getType() == Space.Type.END) end = space.getId();
-            if (start == null && space.getType() == Space.Type.START) start = space.getId();
-            this.spaces.add(space);
-        }
-    }
-
     public Space getSpace(SpaceID id){
         spaces.initIterator();
         while (spaces.hasNext()){
