@@ -1,6 +1,7 @@
 import jdk.jshell.spi.SPIResolutionException;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class GridReader {
@@ -75,7 +76,7 @@ public class GridReader {
                     if (indexInBounds(row + 1, spaceGrid.length) && spaceGrid[row+1][column] != null) current.addAdjacent(spaceGrid[row+1][column].getId()); // down
 
                     if (indexInBounds(column - 1, spaceGrid[row].length) && spaceGrid[row][column-1] != null) current.addAdjacent(spaceGrid[row][column-1].getId()); // left
-                    if (indexInBounds(column + 1, spaceGrid[row].length) && spaceGrid[row][column-1] != null) current.addAdjacent(spaceGrid[row][column+1].getId()); // right
+                    if (indexInBounds(column + 1, spaceGrid[row].length) && spaceGrid[row][column+1] != null) current.addAdjacent(spaceGrid[row][column+1].getId()); // right
 
                     spaceList.add(current);
                 }
@@ -83,7 +84,7 @@ public class GridReader {
 
             return new Maze(spaceList);
 
-        } catch (Exception e) {
+        } catch (FileNotFoundException e) {
             System.out.println("Error reading file: " + e.getMessage());
             return null;
         }
