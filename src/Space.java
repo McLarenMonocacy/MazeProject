@@ -1,36 +1,35 @@
 public class Space {
-    public static final int MAX_ADJACENT = 4;
+    public enum Type{
+        START,
+        END,
+        OPEN
+    }
 
-    private String type;        // "O", "X", "S", "E"
-    private Space[] adjacent;   // adjacent spaces (up, down, left, right)
+    private final Type type;        // "O", "X", "S", "E"
+    private final CacyLinkedList<SpaceID> adjacent;   // adjacent spaces (up, down, left, right)
     private int adjacentCount;
     private boolean onPath;
-    private int row, col;       // for GridWriter
+    private SpaceID id;
 
-    public Space(String type, int row, int col) {
+    public Space( Type type, SpaceID spaceID) {
         this.type = type;
-        this.row = row;
-        this.col = col;
-        this.adjacent = new Space[MAX_ADJACENT];
+        this.id = spaceID;
+        this.adjacent = new CacyLinkedList<>();
         this.adjacentCount = 0;
         this.onPath = false;
     }
 
-    public void addAdjacent(Space s) {
-        if (adjacentCount < MAX_ADJACENT) {
-            adjacent[adjacentCount++] = s;
-        }
+    public void addAdjacent(SpaceID space) {
+        adjacent.add(space);
+        adjacentCount++;
     }
 
-    public Space[] getAdjacent() { return adjacent; }
+    public CacyLinkedList<SpaceID> getAdjacent() { return adjacent; }
+    public SpaceID getId() {
+        return id;
+    }
     public int getAdjacentCount() { return adjacentCount; }
-    public String getType() { return type; }
+    public Type getType() { return type; }
     public boolean isOnPath() { return onPath; }
     public void setOnPath(boolean onPath) { this.onPath = onPath; }
-    public int getRow() { return row; }
-    public int getCol() { return col; }
-
-    public boolean isOpen() {
-        return type.equals("O") || type.equals("S") || type.equals("E");
-    }
 }

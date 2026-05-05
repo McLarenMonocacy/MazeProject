@@ -7,15 +7,19 @@ class SpaceTest {
     @Test
     void getId() {
         SpaceUUID id = new SpaceUUID();
-        Space space = new Space(id);
+        Space space = new Space(Space.Type.OPEN, id);
         assertEquals(id, space.getId(), "Id not saved");
     }
 
     @Test
-    void getTags() {
-        CacyLinkedList<Space.Tag> tags = new CacyLinkedList<>();
-        tags.add(Space.Tag.START);
-        Space space = new Space(new SpaceUUID(), tags);
-        assertEquals(tags, space.getTags(), "Tag list not saved");
+    void adjacentSpaces(){
+        Space space = new Space(Space.Type.OPEN, new SpaceUUID());
+        assertEquals(0, space.getAdjacent().length(), "Adjacent spaces not starting as zero");
+        space.addAdjacent(new SpaceUUID());
+        space.addAdjacent(new SpaceUUID());
+        space.addAdjacent(new SpaceUUID());
+        assertEquals(3, space.getAdjacent().length(), "Adjacent spaces not at 3 after adding 3");
     }
+
+
 }
