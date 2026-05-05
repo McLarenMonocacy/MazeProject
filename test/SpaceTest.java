@@ -7,13 +7,13 @@ class SpaceTest {
     @Test
     void getId() {
         SpaceUUID id = new SpaceUUID();
-        Space space = new Space(Space.Type.OPEN, id);
+        Space space = new Space(null, id);
         assertEquals(id, space.getId(), "Id not saved");
     }
 
     @Test
     void adjacentSpaces(){
-        Space space = new Space(Space.Type.OPEN, new SpaceUUID());
+        Space space = new Space(null, new SpaceUUID());
         assertEquals(0, space.getAdjacent().length(), "Adjacent spaces not starting as zero");
         space.addAdjacent(new SpaceUUID());
         space.addAdjacent(new SpaceUUID());
