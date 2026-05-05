@@ -5,11 +5,12 @@ public class Space {
         OPEN
     }
 
-    private final Type type;        // "O", "X", "S", "E"
-    private final CacyLinkedList<SpaceID> adjacent;   // adjacent spaces (up, down, left, right)
+    private final Type type;
+    private final CacyLinkedList<SpaceID> adjacent;   // adjacent spaces
     private int adjacentCount;
-    private boolean onPath;
-    private SpaceID id;
+    public boolean onPath;
+    public boolean isDeadEnd;
+    private final SpaceID id;
 
     public Space( Type type, SpaceID spaceID) {
         this.type = type;
@@ -17,6 +18,7 @@ public class Space {
         this.adjacent = new CacyLinkedList<>();
         this.adjacentCount = 0;
         this.onPath = false;
+        this.isDeadEnd = false;
     }
 
     public void addAdjacent(SpaceID space) {
@@ -30,6 +32,4 @@ public class Space {
     }
     public int getAdjacentCount() { return adjacentCount; }
     public Type getType() { return type; }
-    public boolean isOnPath() { return onPath; }
-    public void setOnPath(boolean onPath) { this.onPath = onPath; }
 }
