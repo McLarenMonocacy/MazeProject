@@ -4,6 +4,9 @@ public class Maze {
     private int spaceCount;
     private SpaceID start;
     private SpaceID end;
+    public Maze() {
+        this.spaces = new CacyLinkedList<>();
+    }
 
     public Maze(CacyLinkedList<Space> spaces){
         this.spaces = spaces;
@@ -35,8 +38,17 @@ public class Maze {
         }
         return null;
     }
+    public void addSpace(Space space) {
+        if (space.getType() == Space.Type.END)   end   = space.getId();
+        if (space.getType() == Space.Type.START) start = space.getId();
+        spaces.add(space);
+        spaceCount++;
+    }
 
     public SpaceID getStart() { return start;}
     public SpaceID getEnd() { return end;}
     public int getSpaceCount(){ return spaceCount;}
+    public CacyLinkedList<Space> getSpaces() {
+        return spaces;
+    }
 }

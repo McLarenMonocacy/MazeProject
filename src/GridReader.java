@@ -64,10 +64,10 @@ public class GridReader {
                     Space current = spaceGrid[r][c];
                     if (!current.isOpen()) continue;
 
-                    if (r > 0       && spaceGrid[r-1][c].isOpen()) current.addAdjacent(spaceGrid[r-1][c]); // up
-                    if (r < rows-1  && spaceGrid[r+1][c].isOpen()) current.addAdjacent(spaceGrid[r+1][c]); // down
-                    if (c > 0       && spaceGrid[r][c-1].isOpen()) current.addAdjacent(spaceGrid[r][c-1]); // left
-                    if (c < cols-1  && spaceGrid[r][c+1].isOpen()) current.addAdjacent(spaceGrid[r][c+1]); // right
+                    if (r > 0       && spaceGrid[r-1][c].isOpen()) current.addAdjacent(spaceGrid[r-1][c].getId()); // up
+                    if (r < rows-1  && spaceGrid[r+1][c].isOpen()) current.addAdjacent(spaceGrid[r+1][c].getId()); // down
+                    if (c > 0       && spaceGrid[r][c-1].isOpen()) current.addAdjacent(spaceGrid[r][c-1].getId()); // left
+                    if (c < cols-1  && spaceGrid[r][c+1].isOpen()) current.addAdjacent(spaceGrid[r][c+1].getId()); // right
                 }
             }
 
