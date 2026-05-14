@@ -6,8 +6,8 @@ public class MazeSolver {
         this.maze = maze;
     }
 
-    public void solve(){
-        solveFrom(maze.getSpace(maze.getStart()));
+    public boolean solve(){
+        return solveFrom(maze.getSpace(maze.getStart()));
     }
 
     private boolean solveFrom(Space current) {
