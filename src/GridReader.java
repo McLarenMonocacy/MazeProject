@@ -8,7 +8,7 @@ public class GridReader {
     public static final int MAX_ROWS = 50;
     public static final int MAX_COLS = 50;
 
-    public Maze readMaze(String filename) {
+    public static Maze readMaze(String filename) {
         try {
             File file = new File(filename);
             Scanner scanner = new Scanner(file);
@@ -90,7 +90,7 @@ public class GridReader {
         }
     }
 
-    private boolean indexInBounds(int value, int arrayLength){
+    private static boolean indexInBounds(int value, int arrayLength){
         return 0 <= value && value < arrayLength;
     }
 }
