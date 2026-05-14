@@ -1,0 +1,5 @@
+X,X,X,S,X,X
+O,O,O,O,X,E
+O,X,X,O,O,O
+O,O,O,O,O,X
+X,X,X,X,X,X,X
