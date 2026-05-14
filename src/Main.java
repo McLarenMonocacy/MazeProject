@@ -1,13 +1,16 @@
 public class Main {
     public static void main(String[] args) {
 
-        Maze maze = new GridReader().readMaze("Resources/sample_maze.txt");
+        Maze maze = GridReader.readMaze("Resources/sample_maze.txt");
 
-        int x; //line to place stop point on
+        MazeSolver solver = new MazeSolver(maze);
 
-        x = 0;
-        while(x < 10) {
-            x++;
+        if (solver.solve()){
+            System.out.println(new GridMazeOutput(maze).output(false));
+            System.out.println(new GridMazeOutput(maze).output(true));
+        }
+        else {
+            System.out.println("No path found");
         }
     }
 }

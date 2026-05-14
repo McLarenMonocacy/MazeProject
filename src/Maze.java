@@ -27,6 +27,15 @@ public class Maze {
         return null;
     }
 
+    public CacyLinkedList<SpaceID> getAllSpaces(){
+        CacyLinkedList<SpaceID> output = new CacyLinkedList<>();
+        spaces.initIterator();
+        while (spaces.hasNext()){
+            output.add(spaces.next().getId());
+        }
+        return output;
+    }
+
     public SpaceID getStart() { return start;}
     public SpaceID getEnd() { return end;}
     public int getSpaceCount(){ return spaceCount;}
