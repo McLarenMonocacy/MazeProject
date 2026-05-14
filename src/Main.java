@@ -8,7 +8,7 @@ public class Main {
         } else {
             // Default demo file so the program still runs when launched
             // from an IDE without arguments.
-            filename = "Resources/sample_maze_no_soln.txt";
+            filename = "Resources/sample_maze.txt";
             System.out.println("No file argument supplied – trying default: " + filename);
             System.out.println("Usage: java Main <maze-file>");
             System.out.println();
