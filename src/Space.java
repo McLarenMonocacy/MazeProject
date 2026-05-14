@@ -1,8 +1,8 @@
 public class Space {
     public enum Type{
         START,
-        END,
-        OPEN
+        END
+        //All spaces are open so a null Type is just an open space
     }
 
     private final Type type;

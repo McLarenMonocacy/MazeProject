@@ -9,22 +9,13 @@ public class Maze {
         this.spaces = spaces;
         this.spaceCount = spaces.length();
         this.spaces.initIterator();
-        while (start == null && end == null && this.spaces.hasNext()){
+        while ((start == null || end == null) && this.spaces.hasNext()){
             Space space = spaces.next();
             if (end == null && space.getType() == Space.Type.END) end = space.getId();
             if (start == null && space.getType() == Space.Type.START) start = space.getId();
 
         }
 
-    }
-
-    public Maze(Space[] spaces){
-        this.spaces = new CacyLinkedList<>();
-        for (Space space : spaces){
-            if (end == null && space.getType() == Space.Type.END) end = space.getId();
-            if (start == null && space.getType() == Space.Type.START) start = space.getId();
-            this.spaces.add(space);
-        }
     }
 
     public Space getSpace(SpaceID id){
@@ -34,6 +25,15 @@ public class Maze {
             if (space.getId().equals(id)) return space;
         }
         return null;
+    }
+
+    public CacyLinkedList<SpaceID> getAllSpaces(){
+        CacyLinkedList<SpaceID> output = new CacyLinkedList<>();
+        spaces.initIterator();
+        while (spaces.hasNext()){
+            output.add(spaces.next().getId());
+        }
+        return output;
     }
 
     public SpaceID getStart() { return start;}

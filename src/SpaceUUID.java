@@ -14,7 +14,7 @@ public class SpaceUUID extends SpaceID{
 
     @Override
     public boolean equals(SpaceID otherSpaceID) {
-        if (!otherSpaceID.getClass().equals(this.getClass())) return false;
+        if (!sameIDType(otherSpaceID)) return false;
         return ((SpaceUUID) otherSpaceID).getId().equals(id);
     }
 }
